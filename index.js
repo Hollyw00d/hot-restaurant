@@ -11,6 +11,16 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Custom table reservation
+var customTableReservations = [
+    {
+        customerName: 'Lady Gaga',
+        phoneNumber: '206-555-1212',
+        customerEmail: 'lady@gaga.com',
+        customerId: '12345'
+    }
+];
+
 // Basic route that sends the user first to the AJAX Page
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'home.html'));
@@ -25,7 +35,7 @@ app.get('/reserve', function(req, res) {
 });
 
 app.get('/api/tables', function(req, res) {
-    res.end('Table reservations');
+    res.json(customTableReservations);
 });
 
 app.get('/api/waitlist', function(req, res) {
