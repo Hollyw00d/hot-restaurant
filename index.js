@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Custom table reservation
-var customTableReservations = [
+var customerTableReservations = [
     {
         customerName: 'Lady Gaga',
         phoneNumber: '206-555-1212',
@@ -20,6 +20,8 @@ var customTableReservations = [
         customerId: '12345'
     }
 ];
+
+var customerTableWaitList = [];
 
 // Basic route that sends the user first to the AJAX Page
 app.get('/', function(req, res) {
@@ -35,11 +37,11 @@ app.get('/reserve', function(req, res) {
 });
 
 app.get('/api/tables', function(req, res) {
-    res.json(customTableReservations);
+    res.json(customerTableReservations);
 });
 
 app.get('/api/waitlist', function(req, res) {
-    res.end('Table waitlist');
+    res.json(customerTableWaitList);
 });
 
 // Starts the server to begin listening
