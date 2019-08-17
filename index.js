@@ -44,6 +44,12 @@ app.get('/api/waitlist', function(req, res) {
     res.json(customerTableWaitList);
 });
 
+app.post('/api/tables', function(req, res) {
+    var newRestaurant = req.body;
+    customerTableReservations.push(newRestaurant);
+    res.json(newRestaurant);
+});
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {

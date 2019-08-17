@@ -95,10 +95,8 @@
 			customerName: $('#reserve_name').val().trim(),
 			phoneNumber: $('#reserve_phone').val().trim(),
 			customerEmail: $('#reserve_email').val().trim(),
-			customerID: $('#reserve_uniqueID').val().trim()
+			customerId: $('#reserve_uniqueID').val().trim()
 		};
-
-		console.log(newReservation);
 
 		// This line is the magic. It's very similar to the standard ajax function we used.
 		// Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
@@ -109,8 +107,12 @@
 		// We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
 		var currentURL = window.location.origin;
 
-	    $.post(currentURL + "/api/tables", newReservation,
+	    $.post("/api/tables", newReservation,
 	    function(data){
+
+			console.log('blah');
+
+			console.log(data);
 
 	    	// If a table is available... tell user they are booked.
 	    	if(data == true){
