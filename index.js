@@ -20,6 +20,18 @@ app.get('/tables', function(req, res) {
     res.sendFile(path.join(__dirname, 'view.html'));
 });
 
+app.get('/reserve', function(req, res) {
+    res.sendFile(path.join(__dirname, 'make.html'));
+});
+
+app.get('/api/tables', function(req, res) {
+    res.end('Table reservations');
+});
+
+app.get('/api/waitlist', function(req, res) {
+    res.end('Table waitlist');
+});
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
